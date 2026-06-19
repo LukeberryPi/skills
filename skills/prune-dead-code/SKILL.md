@@ -1,11 +1,11 @@
 ---
 name: prune-dead-code
-description: Audit a codebase for safe-to-remove declarations, including dead code, duplicated constants, drift-prone literals, and arbitrary limits. Use when asked to find unused code, deduplicate declarations, remove arbitrary caps or thresholds, or clean up a codebase.
+description: Audit a codebase for dead and otherwise safe-to-remove code, and report each finding for approval. Use when asked to find dead or unused code, deduplicate repeated constants, replace magic literals that duplicate a named constant, or remove arbitrary caps, thresholds, or timeouts.
 ---
 
 # Prune Dead Code
 
-Find low-value declarations in four categories. Verify usage repository-wide, report every finding in the required format, and separate safe removals from intentional arbitrary values.
+Treat every declaration as **live** until you have proven it safe to remove. Find candidates in four categories, verify each one across the whole repository, and report them all for approval before editing.
 
 ## Categories
 
@@ -16,13 +16,13 @@ Find low-value declarations in four categories. Verify usage repository-wide, re
 
 ## Workflow
 
-1. Search each category across the whole repository, including code and tests.
-2. Search every candidate's usage before judging it.
+1. Search each category across the whole repository, code and tests alike.
+2. Verify every candidate's usage before judging it; one missed reference makes the verdict wrong.
 3. Classify each candidate as safe to remove or arbitrary but intentional.
-4. Report the required table.
+4. Report the table below.
 5. Ask which findings to apply before editing.
 6. Apply approved changes and update affected tests.
-7. Run typecheck, lint, and tests; fix issues caused by the changes.
+7. Run typecheck, lint, and tests; fix anything the changes broke.
 
 ## Required Output
 
@@ -43,9 +43,10 @@ Use exactly these columns:
 
 ## Rules
 
-- Verify before claiming dead. A symbol used only in its file may be unexported, not deleted; cross-file consumers require it to remain exported.
-- Check tests before removing exports. Keep exports used to test non-trivial logic, or flag the trade-off.
-- Keep intentional tuning values such as animation timings, debounce intervals, sizes, and minimums. Report them as arbitrary but intentional.
+When in doubt, it stays **live** — remove only what you have proven dead.
+
+- A symbol used only in its own file may be unexported, not deleted; cross-file consumers require it to stay exported.
+- Check tests before removing exports. Keep exports that cover non-trivial logic, or flag the trade-off.
+- Keep intentional tuning values — animation timings, debounce intervals, sizes, minimums — and report them as arbitrary but intentional.
 - Keep validation and guards that prevent crashes on corrupt or missing data.
 - Treat uncertain dynamic access, reflection, constructed imports, public APIs, and framework entry points as live.
-- Remove only fully verified dead code.
