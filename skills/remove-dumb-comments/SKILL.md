@@ -1,11 +1,11 @@
 ---
 name: remove-dumb-comments
-description: Find low-value comments that merely restate adjacent code and confirm their removal with the user. Use when asked to remove dumb, redundant, obvious, or noisy comments, clean up comments, or invoke `/remove-dumb-comments [<number>|all]`.
+description: Flag comments that merely restate the code instead of explaining why, and remove only those the user approves. Use when asked to remove dumb, redundant, or obvious comments, clean up comments, or invoke `/remove-dumb-comments [<number>|all]`.
 ---
 
 # Remove Dumb Comments
 
-Find comments that only restate adjacent code or rename a symbol, then let the user choose which to remove.
+Flag comments that say *what* the code already says; keep every comment that explains *why*. The user chooses which flagged comments to remove.
 
 ## Invocation
 
@@ -17,31 +17,29 @@ Find comments that only restate adjacent code or rename a symbol, then let the u
 
 ## Never Remove
 
-Keep comments that explain:
+Keep any comment that carries a *why* the code cannot convey:
 
 - backports, compatibility, or version-specific behavior;
 - infrastructure, deployment, or architecture;
 - workarounds, gotchas, or non-obvious reasons;
 - documentation, specifications, RFCs, or ADRs;
 - bugs, issues, tickets, or contextual TODOs/FIXMEs;
-- intent, trade-offs, constraints, or other "why" the code cannot convey.
+- intent, trade-offs, or constraints.
 
 When unsure, keep it. Flag only pure restatements.
 
 ## Workflow
 
-1. Set the limit to 10, the supplied number, or all.
+1. Resolve the limit from the invocation (default 10).
 2. Search source files; skip generated output, vendored dependencies, lockfiles, and documentation.
-3. Rank candidates from most redundant to least redundant.
-4. Get each candidate's age with `git blame`.
-5. Present the required table.
-6. Ask whether to remove all recommended comments.
-7. If yes, remove every `Remove` item without individual review.
-8. If no, ask `Remove` or `Keep` for each comment, using its exact text rather than its location.
-9. Remove only approved comments.
-10. Run the project's lint and typecheck. Fix issues caused by the changes.
+3. Rank candidates from most redundant to least.
+4. Get each candidate's age with `git blame` (see Comment Age).
+5. Present the table below, then ask whether to remove all recommended (see Feedback).
+6. If yes, treat every `Remove` item as approved. If no, ask `Remove` or `Keep` for each, naming it by its exact text, not its location.
+7. Remove only the approved comments.
+8. Run the project's lint and typecheck; fix anything the changes broke.
 
-If available, delegate the read-only search to a fast, low-reasoning subagent. Request at most the limit, with exact path, line, comment text, and one to three adjacent code lines. Otherwise search directly.
+Delegate the read-only search to a fast, low-reasoning subagent when one is available: request at most the limit, each with exact path, line, comment text, and one to three adjacent code lines. Otherwise search directly.
 
 ## Comment Age
 

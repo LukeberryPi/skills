@@ -1,0 +1,7 @@
+{
+  "name": "lukeberry-skills",
+  "skills": [
+    "./skills/prune-dead-code",
+    "./skills/remove-dumb-comments"
+  ]
+}
