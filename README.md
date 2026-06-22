@@ -6,30 +6,31 @@ Reusable coding-agent skills for codebase maintenance.
 
 | Skill | Description |
 |---|---|
+| [`mega-brain-com-copy-thief`](skills/mega-brain-com-copy-thief/SKILL.md) | Manual-only Portuguese video reformulation workflow for entrepreneur-focused scripts. |
 | [`prune-dead-code`](skills/prune-dead-code/SKILL.md) | Audits dead declarations, duplicated constants, drift-prone literals, and arbitrary limits. |
 | [`remove-dumb-comments`](skills/remove-dumb-comments/SKILL.md) | Finds comments that merely restate the code and removes only those approved by the user. |
 
 ## Install
 
-Clone the repository, then copy or symlink the skill directories into the skills directory used by your agent.
-
-### Codex
+Install every skill in this repository:
 
 ```bash
-git clone https://github.com/lukeberry99/skills.git
-mkdir -p ~/.codex/skills
-cp -R skills/skills/* ~/.codex/skills/
+npx skills add LukeberryPi/skills
 ```
 
-### Claude Code
+Install one specific skill:
 
 ```bash
-git clone https://github.com/lukeberry99/skills.git
-mkdir -p ~/.claude/skills
-cp -R skills/skills/* ~/.claude/skills/
+npx skills add LukeberryPi/skills --skill mega-brain-com-copy-thief
+npx skills add LukeberryPi/skills --skill prune-dead-code
+npx skills add LukeberryPi/skills --skill remove-dumb-comments
 ```
 
-To install one skill, copy only its directory.
+General form:
+
+```bash
+npx skills add your-github-username/your-skills --skill your-skill-name
+```
 
 ### Claude plugin
 
@@ -43,6 +44,8 @@ The repo ships a [Claude plugin](https://docs.anthropic.com/en/docs/claude-code/
 ├── .claude-plugin/
 │   └── plugin.json
 └── skills/
+    ├── mega-brain-com-copy-thief/
+    │   └── SKILL.md
     ├── prune-dead-code/
     │   └── SKILL.md
     └── remove-dumb-comments/

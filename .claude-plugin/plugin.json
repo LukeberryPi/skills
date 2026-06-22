@@ -1,6 +1,7 @@
 {
   "name": "lukeberry-skills",
   "skills": [
+    "./skills/mega-brain-com-copy-thief",
     "./skills/prune-dead-code",
     "./skills/remove-dumb-comments"
   ]
