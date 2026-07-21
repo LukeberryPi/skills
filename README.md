@@ -6,6 +6,7 @@ Reusable coding-agent skills for codebase maintenance.
 
 | Skill | Description |
 |---|---|
+| [`dissect-and-interview`](skills/dissect-and-interview/SKILL.md) | Dissects a codebase and runs a 10-question mock technical interview, rating each answer and closing PASS or FAIL. |
 | [`mega-brain-com-copy-thief`](skills/mega-brain-com-copy-thief/SKILL.md) | Manual-only Portuguese video reformulation workflow for entrepreneur-focused scripts. |
 | [`prune-dead-code`](skills/prune-dead-code/SKILL.md) | Audits dead declarations, duplicated constants, drift-prone literals, and arbitrary limits. |
 | [`remove-dumb-comments`](skills/remove-dumb-comments/SKILL.md) | Finds comments that merely restate the code and removes only those approved by the user. |
@@ -21,6 +22,7 @@ npx skills add LukeberryPi/skills
 Install one specific skill:
 
 ```bash
+npx skills add LukeberryPi/skills --skill dissect-and-interview
 npx skills add LukeberryPi/skills --skill mega-brain-com-copy-thief
 npx skills add LukeberryPi/skills --skill prune-dead-code
 npx skills add LukeberryPi/skills --skill remove-dumb-comments
@@ -44,6 +46,8 @@ The repo ships a [Claude plugin](https://docs.anthropic.com/en/docs/claude-code/
 ├── .claude-plugin/
 │   └── plugin.json
 └── skills/
+    ├── dissect-and-interview/
+    │   └── SKILL.md
     ├── mega-brain-com-copy-thief/
     │   └── SKILL.md
     ├── prune-dead-code/
