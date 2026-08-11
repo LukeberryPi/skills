@@ -1,0 +1,3 @@
+display_name: A11y Maxxing
+short_description: Audit or remediate web accessibility barriers in scope.
+default_prompt: Use $a11y-maxxing to audit this project's essential user journeys for accessibility barriers.

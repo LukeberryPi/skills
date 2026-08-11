@@ -1,6 +1,7 @@
 {
   "name": "lukeberry-skills",
   "skills": [
+    "./skills/a11y-maxxing",
     "./skills/dissect-and-interview",
     "./skills/mega-brain-com-copy-thief",
     "./skills/prune-dead-code",

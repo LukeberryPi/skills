@@ -6,6 +6,7 @@ Reusable coding-agent skills for codebase maintenance.
 
 | Skill | Description |
 |---|---|
+| [`a11y-maxxing`](skills/a11y-maxxing/SKILL.md) | Audits or remediates web accessibility barriers, optimizing accessible task completion against a WCAG 2.2 AA floor. |
 | [`dissect-and-interview`](skills/dissect-and-interview/SKILL.md) | Dissects a codebase and runs a 10-question mock technical interview, rating each answer and closing PASS or FAIL. |
 | [`mega-brain-com-copy-thief`](skills/mega-brain-com-copy-thief/SKILL.md) | Manual-only Portuguese video reformulation workflow for entrepreneur-focused scripts. |
 | [`prune-dead-code`](skills/prune-dead-code/SKILL.md) | Audits dead declarations, duplicated constants, drift-prone literals, and arbitrary limits. |
@@ -22,6 +23,7 @@ npx skills add LukeberryPi/skills
 Install one specific skill:
 
 ```bash
+npx skills add LukeberryPi/skills --skill a11y-maxxing
 npx skills add LukeberryPi/skills --skill dissect-and-interview
 npx skills add LukeberryPi/skills --skill mega-brain-com-copy-thief
 npx skills add LukeberryPi/skills --skill prune-dead-code
@@ -46,6 +48,14 @@ The repo ships a [Claude plugin](https://docs.anthropic.com/en/docs/claude-code/
 ├── .claude-plugin/
 │   └── plugin.json
 └── skills/
+    ├── a11y-maxxing/
+    │   ├── SKILL.md
+    │   ├── agents/
+    │   │   └── openai.yaml
+    │   ├── references/
+    │   │   └── manual-audit.md
+    │   └── scripts/
+    │       └── compare-evidence.mjs
     ├── dissect-and-interview/
     │   └── SKILL.md
     ├── mega-brain-com-copy-thief/
