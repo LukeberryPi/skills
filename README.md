@@ -11,6 +11,7 @@ Reusable coding-agent skills for codebase maintenance.
 | [`mega-brain-com-copy-thief`](skills/mega-brain-com-copy-thief/SKILL.md) | Manual-only Portuguese video reformulation workflow for entrepreneur-focused scripts. |
 | [`prune-dead-code`](skills/prune-dead-code/SKILL.md) | Audits dead declarations, duplicated constants, drift-prone literals, and arbitrary limits. |
 | [`remove-dumb-comments`](skills/remove-dumb-comments/SKILL.md) | Finds comments that merely restate the code and removes only those approved by the user. |
+| [`timotom`](skills/timotom/SKILL.md) | Trace-reviews BauerXcel web changes with the standards demonstrated by Tom Ellwood and Haapti. |
 
 ## Install
 
@@ -28,6 +29,7 @@ npx skills add LukeberryPi/skills --skill dissect-and-interview
 npx skills add LukeberryPi/skills --skill mega-brain-com-copy-thief
 npx skills add LukeberryPi/skills --skill prune-dead-code
 npx skills add LukeberryPi/skills --skill remove-dumb-comments
+npx skills add LukeberryPi/skills --skill timotom
 ```
 
 General form:
@@ -62,8 +64,14 @@ The repo ships a [Claude plugin](https://docs.anthropic.com/en/docs/claude-code/
     │   └── SKILL.md
     ├── prune-dead-code/
     │   └── SKILL.md
-    └── remove-dumb-comments/
-        └── SKILL.md
+    ├── remove-dumb-comments/
+    │   └── SKILL.md
+    └── timotom/
+        ├── SKILL.md
+        ├── agents/
+        │   └── openai.yaml
+        └── references/
+            └── calibration.md
 ```
 
 ## GitHub Topics

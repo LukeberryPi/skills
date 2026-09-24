@@ -1,0 +1,4 @@
+interface:
+  display_name: "Timotom"
+  short_description: "Trace code changes through the whole system"
+  default_prompt: "Use $timotom to review this pull request thoroughly."
